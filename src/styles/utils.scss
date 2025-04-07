@@ -1,0 +1,39 @@
+@use "sass:map";
+@use "sass:list";
+@use "theme";
+
+@function colorLayers($color-list...) {
+    $gradients: (
+    );
+
+@each $color in $color-list {
+    $gradients: list.append($gradients, linear-gradient(0deg, $color, $color), comma);
+}
+
+// Return the concatenated gradients
+@return $gradients;
+}
+
+
+$radius-sizes: (
+    xs: 2px,
+    sm: 4px,
+    md: 8px,
+    lg: 12px,
+    xl: 16px,
+    full: 100%,
+);
+
+
+@mixin rounded($size) {
+    border-radius: map.get($radius-sizes, $size)
+}
+
+@mixin popover-shadow {
+    box-shadow: 0px -1px 4px 0px map.get(theme.$colors, black-4);
+    box-shadow: 0px 2px 4px 0px map.get(theme.$colors, black-16);
+}
+
+@mixin card-shadow {
+    box-shadow: 0px 3px 8px 0px map.get(theme.$colors, black-12);
+}

@@ -1,0 +1,27 @@
+@use "sass:map";
+
+
+$colors: (
+    primary: rgba(59, 59, 59, 1),
+    primary-5: rgba(59, 59, 59, 0.05),
+    primary-foreground: rgba(255, 255, 255, 0.95),
+    border: rgba(0, 0, 0, 0.2),
+    white: rgba(255, 255, 255, 1),
+    black-3: rgba(0, 0, 0, 0.03),
+    black-4: rgba(0, 0, 0, 0.04),
+    black-5: rgba(0, 0, 0, 0.05),
+    black-12: rgba(0, 0, 0, 0.12),
+    black-16: rgba(0, 0, 0, 0.16),
+    button-accent: rgba(98, 67, 230, 1),
+    button-accent-assist: rgba(153, 129, 255, 0.2),
+    input-accent:rgba(53, 205, 253, 1),
+    destructive: rgba(215, 35, 35, 1)
+);
+
+@for $i from 1 through 10 {
+    $opacity: calc($i / 10);
+    $white-name: "white-#{$i * 10}";
+    $black-name: "black-#{$i * 10}";
+    $colors: map.merge($colors, (#{$white-name}: rgba(255, 255, 255, $opacity),
+                #{$black-name}: rgba(0, 0, 0, $opacity)));
+}

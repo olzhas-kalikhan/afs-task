@@ -1,0 +1,53 @@
+@use "sass:map";
+@use "/src/styles/theme";
+@use "/src/styles/utils";
+
+.date-picker {
+    --rdp-accent-color: rgba(98, 67, 230, 1);
+
+    @include utils.rounded(md);
+    @include utils.popover-shadow;
+
+    padding: 12px;
+    background-color: map.get(theme.$colors, white);
+
+
+    &__trigger {
+        @include utils.rounded(md);
+
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 160px;
+        height: 40px;
+        padding: 10px 12px;
+        border-width: 0px;
+
+        background-color: map.get(theme.$colors, white);
+        outline: solid;
+        outline-color: map.get(theme.$colors, border);
+        outline-width: 1px;
+
+        &:hover {
+            outline-color: map.get(theme.$colors, black-50);
+            outline-width: 1px;
+        }
+
+        &:focus,
+        &:focus-visible,
+        &:focus-within {
+            outline-color: map.get(theme.$colors, input-accent);
+            outline-width: 2px;
+        }
+
+        &[data-state="open"] {
+            >svg {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+
+}

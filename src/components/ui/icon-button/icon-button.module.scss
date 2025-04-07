@@ -1,0 +1,77 @@
+@use "sass:map";
+@use "/src/styles/theme";
+@use "/src/styles/utils";
+
+@mixin filled-icon-button {
+    @include utils.rounded(md);
+
+    color: map.get(theme.$colors, primary-foreground);
+    background: map.get(theme.$colors, primary);
+
+
+}
+
+.icon-button {
+    cursor: pointer;
+    padding: 6px;
+    border-width: 0;
+    stroke: currentColor;
+
+    &--md {
+        width: 28px;
+        height: 28px;
+
+    }
+
+    &--lg {
+        width: 32px;
+        height: 32px;
+
+    }
+
+    &--xl {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+    }
+
+    &--filled {
+        @include filled-icon-button();
+        @include utils.card-shadow();
+
+        &:hover {
+            background: utils.colorLayers(map.get(theme.$colors, white-20), map.get(theme.$colors, primary));
+        }
+
+        &:active {
+            background: utils.colorLayers(map.get(theme.$colors, white-30), map.get(theme.$colors, primary));
+        }
+    }
+
+    &--sidebar {
+        @include filled-icon-button();
+
+        &:hover {
+            background: utils.colorLayers(map.get(theme.$colors, white-10), map.get(theme.$colors, primary));
+        }
+
+        &:active {
+            background: utils.colorLayers(map.get(theme.$colors, white-20), map.get(theme.$colors, primary));
+        }
+    }
+
+    &--ghost {
+        @include utils.rounded(full);
+
+        color: map.get(theme.$colors, primary);
+        background: map.get(theme.$colors, white);
+
+        &:hover {
+            background: map.get(theme.$colors, primary-5)
+        }
+
+        &:active {
+            background: map.get(theme.$colors, button-accent-assist)
+        }
+    }
+}

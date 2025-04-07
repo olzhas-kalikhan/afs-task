@@ -1,0 +1,28 @@
+@use "/src/styles/utils.scss";
+
+.photos-card {
+
+
+    &__photos-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    &__photo-container {
+        position: relative;
+    }
+
+    &__photo {
+        @include utils.rounded(md);
+
+        width: 144px;
+        height: 108px;
+    }
+
+    &__photo-icon {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+    }
+}

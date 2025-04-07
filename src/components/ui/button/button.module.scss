@@ -1,0 +1,78 @@
+@use "sass:map";
+@use "/src/styles/theme";
+@use "/src/styles/utils";
+
+@mixin button-outline {
+    background: map.get(theme.$colors, white);
+    outline: solid;
+    outline-color: map.get(theme.$colors, black-20);
+    outline-width: 1px;
+
+
+    &:hover {
+        color: map.get(theme.$colors, button-accent);
+        outline-color: map.get(theme.$colors, black-40);
+
+    }
+
+    &:active {
+        color: map.get(theme.$colors, button-accent);
+        outline-color: map.get(theme.$colors, button-accent);
+    }
+}
+
+.button {
+    @include utils.rounded(md);
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 40;
+    padding: 10px 12px;
+    border-width: 0px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    outline: none;
+
+    &__icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        stroke: currentColor;
+    }
+
+    &--filled {
+        color: map.get(theme.$colors, primary-foreground);
+        background: map.get(theme.$colors, primary);
+
+        @include utils.card-shadow();
+
+        &:hover {
+            background: utils.colorLayers(map.get(theme.$colors, white-20), map.get(theme.$colors, primary));
+        }
+
+        &:active {
+            background: utils.colorLayers(map.get(theme.$colors, white-30), map.get(theme.$colors, primary));
+        }
+    }
+
+    &--outline {
+        @include button-outline;
+    }
+
+    &--flat {
+        min-width: 72px;
+        height: 28px;
+        padding: 4px 8px;
+        font-size: 11px;
+
+        @include button-outline;
+    }
+
+}

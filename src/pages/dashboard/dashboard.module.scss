@@ -1,0 +1,47 @@
+@use "sass:map";
+@use "/src/styles/theme";
+@use "/src/styles/utils";
+
+.dashboard {
+    display: flex;
+    width: 100%;
+    background: utils.colorLayers(map.get(theme.$colors, black-3), map.get(theme.$colors, white-100));
+
+    &__no-organizations {
+        margin: auto
+    }
+
+    &__header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__header-back {
+        position: absolute;
+        left: -45px
+    }
+
+    &__header-delete {
+        color: map.get(theme.$colors, destructive);
+    }
+
+    &__header-title {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 40px;
+        letter-spacing: 0.25px;
+        vertical-align: middle;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        width: 640px;
+        margin-inline: auto;
+        padding-top: 40px;
+    }
+}

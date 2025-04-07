@@ -1,0 +1,134 @@
+@use "sass:map";
+@use "/src/styles/theme";
+@use "/src/styles/utils";
+
+.select {
+    &__control {
+        @include utils.rounded(md);
+
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 10px 12px;
+        border-width: 0px;
+
+        background-color: map.get(theme.$colors, white);
+        outline: solid;
+        outline-color: map.get(theme.$colors, border);
+        outline-width: 1px;
+
+        &:hover {
+            outline-color: map.get(theme.$colors, black-50);
+            outline-width: 1px;
+        }
+
+        &:focus,
+        &:focus-visible,
+        &:focus-within {
+            outline-color: map.get(theme.$colors, input-accent);
+            outline-width: 2px;
+        }
+
+        &[data-state="open"] {
+            >svg {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    &__dropdown-indicator {
+        width: 20px;
+        height: 20px;
+    }
+
+    &__arrow {
+        transform: rotate(270deg);
+
+        width: 20px;
+        height: 20px;
+
+        stroke: map.get(theme.$colors, black-100);
+
+        transition: transform 0.2s ease;
+    }
+
+    &__menu {
+        width: var(--radix-popover-trigger-width);
+        max-height: var(--radix-popover-content-available-height);
+    }
+
+    &__menu-list {
+        @include utils.rounded(md);
+        @include utils.popover-shadow;
+
+        overflow: hidden;
+
+        width: var(--radix-select-trigger-width);
+        max-height: var(--radix-select-content-available-height);
+        padding-block: 8px;
+
+        background-color: map.get(theme.$colors, white);
+    }
+
+    &__menu-option {
+        display: flex;
+        align-items: center;
+
+        padding: 12px 16px;
+
+        font-size: 13px;
+        font-weight: 400;
+
+        outline: none;
+
+        &:hover,
+        &:active,
+        &--selected {
+            background-color: map.get(theme.$colors, black-5);
+        }
+
+        &--selected {
+            font-weight: 500;
+            color: map.get(theme.$colors, primary);
+        }
+
+
+    }
+
+    &__checkbox-container {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        padding: 2px;
+
+    }
+
+    &__checkbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        border-color: map.get(theme.$colors, black-30);
+        border-width: 1px;
+        border-radius: 4px;
+
+        background-color: map.get(theme.$colors, white);
+    }
+
+    &__checkbox-icon-container {
+        width: 16px;
+        height: 16px;
+        stroke: map.get(theme.$colors, black-100);
+    }
+
+    &__checkbox-icon {
+        width: 16px;
+        height: 16px;
+        stroke: map.get(theme.$colors, black-80);
+    }
+}

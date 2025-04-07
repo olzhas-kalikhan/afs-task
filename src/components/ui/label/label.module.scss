@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "/src/styles/theme";
+@use "/src/styles/utils";
+
+.label {
+    font-size: 13px;
+    line-height: 20px;
+    color: map.get(theme.$colors, black-50);
+    letter-spacing: 0.25px;
+    vertical-align: middle;
+}

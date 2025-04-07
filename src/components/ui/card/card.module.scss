@@ -1,0 +1,64 @@
+@use "sass:map";
+@use "/src/styles/utils";
+@use "/src/styles/theme";
+
+.card {
+    @include utils.card-shadow;
+    @include utils.rounded(md);
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    padding: 24px;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0.3px;
+        vertical-align: middle;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+
+        &[data-mode="edit"] {
+            gap: 12px
+        }
+    }
+
+    &__entry {
+        display: flex;
+        row-gap: 12px;
+        align-items: center;
+        justify-content: stretch;
+
+        min-height: 32px;
+
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.3px;
+        vertical-align: middle;
+
+        >:first-child {
+            width: 160px;
+        }
+    }
+
+    &__group {
+        display: flex;
+        flex-grow: 1;
+        gap: 12px;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
